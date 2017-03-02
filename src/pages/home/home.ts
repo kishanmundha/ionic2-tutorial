@@ -6,6 +6,7 @@ import { Product } from '../../interfaces';
 
 import { AppProductService } from '../../shared/services/app-product.service';
 
+import { CartPage } from '../cart/cart';
 
 @Component({
   selector: 'page-home',
@@ -14,6 +15,8 @@ import { AppProductService } from '../../shared/services/app-product.service';
 export class HomePage {
 
   products: Product[] = [];
+
+  cartItemCount: number;
 
   dataLoaded = false;
 
@@ -27,6 +30,12 @@ export class HomePage {
     loader.present();
     
     this.appProductService.getProducts().then(products => { this.products = products; this.dataLoaded = true; loader.dismiss() });
+
+    this.appProductService.cartItemCount$.subscribe(count => this.cartItemCount = count);
+  }
+
+  openCart() {
+    this.navCtrl.push(CartPage);
   }
 
 }

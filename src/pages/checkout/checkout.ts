@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Checkout page.
+import { CheckoutSuccessPage } from '../checkout-success/checkout-success';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-checkout',
   templateUrl: 'checkout.html'
@@ -17,6 +13,10 @@ export class CheckoutPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
+  }
+
+  openCheckoutSuccess() {
+    this.navCtrl.setRoot(CheckoutSuccessPage);
   }
 
 }

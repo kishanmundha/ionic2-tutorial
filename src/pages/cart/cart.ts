@@ -1,22 +1,31 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Cart page.
+import { AppProductService } from '../../shared/services/app-product.service';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+import { CheckoutPage } from '../checkout/checkout';
+
 @Component({
   selector: 'page-cart',
   templateUrl: 'cart.html'
 })
 export class CartPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  cartItems: any[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private appProductService: AppProductService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
+
+    this.appProductService.cartItems$.subscribe(items => this.cartItems = items);
   }
 
+  removeProductFromCart(id: number) {
+    this.appProductService.removeProductFromCart(id);
+  }
+
+  openCheckout() {
+    this.navCtrl.push(CheckoutPage);
+  }
 }
