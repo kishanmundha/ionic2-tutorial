@@ -1,0 +1,15 @@
+<ion-card>
+    <img md-card-image [src]="product.image" />
+    <ion-card-header>
+        {{product.name}}
+    </ion-card-header>
+    <ion-card-content>
+        <p>
+            {{product.price | currency:'INR':true}}
+        </p>
+
+        <p>
+            <button ion-button color="light" (click)="addToCart(product.id, product.name)">Add to cart</button>
+        </p>
+    </ion-card-content>
+</ion-card>
