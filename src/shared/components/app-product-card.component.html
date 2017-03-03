@@ -1,15 +1,8 @@
-<ion-card>
-    <img md-card-image [src]="product.image" />
-    <ion-card-header>
-        {{product.name}}
-    </ion-card-header>
-    <ion-card-content>
-        <p>
-            {{product.price | currency:'INR':true}}
-        </p>
-
-        <p>
-            <button ion-button color="dark" (click)="addToCart(product.id, product.name)">Add to cart</button>
-        </p>
-    </ion-card-content>
-</ion-card>
+<ion-item>
+    <ion-thumbnail item-left>
+        <img  [src]="product.image" />
+    </ion-thumbnail>
+    <h2>{{product.name}}</h2>
+    <p>{{product.price | currency:'INR':true}}</p>
+    <button color="dark" ion-button clear item-right (click)="addToCart(product.id, product.name)">Add to cart</button>
+</ion-item>

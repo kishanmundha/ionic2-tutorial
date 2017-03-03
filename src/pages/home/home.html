@@ -15,5 +15,7 @@
 </ion-header>
 
 <ion-content padding>
-  <app-product-card [product]="product" *ngFor="let product of products"></app-product-card>
+  <ion-list>
+    <app-product-card [product]="product" *ngFor="let product of products"></app-product-card>
+  </ion-list>
 </ion-content>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
 
 import { UserInfoFeedback } from '../../interfaces';
 import { FeedbackSuccessPage } from '../feedback-success/feedback-success';
@@ -10,17 +11,31 @@ import { FeedbackSuccessPage } from '../feedback-success/feedback-success';
 })
 export class FeedbackPage {
 
+  @ViewChild(NgForm) feedbackForm: NgForm;
+
   userInfo: UserInfoFeedback = <UserInfoFeedback>{};
 
   formSubmitBtnTouched = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedbackPage');
   }
 
   sendFeedback() {
+    this.formSubmitBtnTouched = true;
+
+    if (this.feedbackForm.invalid) {
+      let alert = this.alertCtrl.create({
+        subTitle: 'Please fill all required field',
+        buttons: ['OK']
+      })
+
+      alert.present();
+      return;
+    }
+
     this.navCtrl.setRoot(FeedbackSuccessPage);
   }
 

@@ -32,10 +32,10 @@
 
     <ion-item>
       <ion-label floating>Address 2</ion-label>
-      <ion-textarea required name="address2" [(ngModel)]="userInfo.address2"></ion-textarea>
+      <ion-textarea name="address2" [(ngModel)]="userInfo.address2"></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="padding-select">
       <ion-label>City</ion-label>
       <ion-select [(ngModel)]="userInfo.city" name="city" required>
         <ion-option value="Ahmedabad">Ahmedabad</ion-option>
@@ -43,7 +43,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="padding-select">
       <ion-label>State</ion-label>
       <ion-select [(ngModel)]="userInfo.state" name="state" required>
         <ion-option value="Gujrat">Gujrat</ion-option>
@@ -52,7 +52,7 @@
 
     <ion-item>
       <ion-label floating>Pincode</ion-label>
-      <ion-input type="text" name="pincode" [(ngModel)]="userInfo.pincode"></ion-input>
+      <ion-input type="text" required name="pincode" [(ngModel)]="userInfo.pincode"></ion-input>
     </ion-item>
   </form>
 </ion-content>
@@ -60,7 +60,7 @@
 <ion-footer>
   <ion-toolbar color="dark">
     <ion-buttons end>
-      <button ion-button icon-right (submit)="checkout()">
+      <button ion-button icon-right [disabled]="formSubmitBtnTouched && checkoutForm.invalid" (click)="checkout()">
         Place order
         <ion-icon name="arrow-forward"></ion-icon>
       </button>

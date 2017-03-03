@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
 
 import { UserInfoCheckout } from '../../interfaces';
 
@@ -11,15 +12,32 @@ import { CheckoutSuccessPage } from '../checkout-success/checkout-success';
 })
 export class CheckoutPage {
 
+  @ViewChild(NgForm) checkoutForm: NgForm;
+
   userInfo: UserInfoCheckout = <UserInfoCheckout>{};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  formSubmitBtnTouched = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
   }
 
   checkout() {
+
+    this.formSubmitBtnTouched = true;
+
+    if (this.checkoutForm.invalid) {
+      let alert = this.alertCtrl.create({
+        subTitle: 'Please fill all required field',
+        buttons: ['OK']
+      })
+
+      alert.present();
+      return;
+    }
+
     this.navCtrl.setRoot(CheckoutSuccessPage);
   }
 

@@ -14,6 +14,11 @@
 
 
 <ion-content padding>
+  <div *ngIf="!cartItems || cartItems.length === 0" style="padding-top:20px;">
+    <h5 style="color:gray; text-align: center;">
+      No products in cart
+    </h5>
+  </div>
   <ion-list>
     <ion-item *ngFor="let product of cartItems">
       <h2>{{product.name}}</h2>
@@ -28,7 +33,7 @@
 <ion-footer>
   <ion-toolbar color="dark">
     <ion-buttons end>
-      <button ion-button icon-right (click)="openCheckout()">
+      <button ion-button icon-right [disabled]="!cartItems || cartItems.length === 0" (click)="openCheckout()">
         Checkout
         <ion-icon name="arrow-forward"></ion-icon>
       </button>

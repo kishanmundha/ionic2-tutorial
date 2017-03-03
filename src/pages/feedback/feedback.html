@@ -32,7 +32,7 @@
     </ion-item>
 
     <div padding>
-      <button block ion-button color="dark" type="submit" (click)="sendFeedback()">Send Feedback</button>
+      <button block ion-button color="dark" type="submit" [disabled]="formSubmitBtnTouched && feedbackForm.invalid" (click)="sendFeedback()">Send Feedback</button>
     </div>
   </form>
 
