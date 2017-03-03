@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 import { UserInfoCheckout } from '../../interfaces';
@@ -18,7 +18,11 @@ export class CheckoutPage {
 
   formSubmitBtnTouched = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private menu: MenuController) {}
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 
@@ -9,7 +9,11 @@ import { HomePage } from '../home/home';
 })
 export class CheckoutSuccessPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController) {}
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutSuccessPage');

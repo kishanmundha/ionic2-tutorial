@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 import { UserInfoFeedback } from '../../interfaces';
@@ -17,7 +17,11 @@ export class FeedbackPage {
 
   formSubmitBtnTouched = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private menu: MenuController) {}
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(true);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedbackPage');

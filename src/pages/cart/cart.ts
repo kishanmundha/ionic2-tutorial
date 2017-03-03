@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 import { AppProductService } from '../../shared/services/app-product.service';
 
@@ -13,7 +13,11 @@ export class CartPage {
 
   cartItems: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private appProductService: AppProductService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private appProductService: AppProductService, private menu: MenuController) {}
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');

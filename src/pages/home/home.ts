@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController } from 'ionic-angular';
 
 import { Product } from '../../interfaces';
 
@@ -20,11 +20,10 @@ export class HomePage {
 
   dataLoaded = false;
 
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private appProductService: AppProductService) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private appProductService: AppProductService, private menu: MenuController) {
 
     let loader = this.loadingCtrl.create({
-      content: "Please wait...",
-      //duration: 3000
+      content: "Please wait..."
     });
 
     loader.present();
@@ -32,6 +31,10 @@ export class HomePage {
     this.appProductService.getProducts().then(products => { this.products = products; this.dataLoaded = true; loader.dismiss() });
 
     this.appProductService.cartItemCount$.subscribe(count => this.cartItemCount = count);
+  }
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(true);
   }
 
   openCart() {
