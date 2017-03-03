@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>feedback</ion-title>
   </ion-navbar>
 
@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <form novalidate name="feedbackForm" #feedbackForm="ngForm" (submit)="sendFeedback()">
+  <form novalidate name="feedbackForm" #feedbackForm="ngForm">
 
     <ion-item>
       <ion-label floating>Full name</ion-label>
@@ -21,8 +21,18 @@
       <ion-input type="text" required name="mobile" [(ngModel)]="userInfo.mobile"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" required name="email" [(ngModel)]="userInfo.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Feedback</ion-label>
+      <ion-textarea required name="feedback" [(ngModel)]="userInfo.feedback"></ion-textarea>
+    </ion-item>
+
     <div padding>
-      <button block ion-button type="submit">Send Feedback</button>
+      <button block ion-button color="dark" type="submit" (click)="sendFeedback()">Send Feedback</button>
     </div>
   </form>
 

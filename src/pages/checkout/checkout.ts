@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { UserInfoCheckout } from '../../interfaces';
+
 import { CheckoutSuccessPage } from '../checkout-success/checkout-success';
 
 @Component({
@@ -9,13 +11,15 @@ import { CheckoutSuccessPage } from '../checkout-success/checkout-success';
 })
 export class CheckoutPage {
 
+  userInfo: UserInfoCheckout = <UserInfoCheckout>{};
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
   }
 
-  openCheckoutSuccess() {
+  checkout() {
     this.navCtrl.setRoot(CheckoutSuccessPage);
   }
 
