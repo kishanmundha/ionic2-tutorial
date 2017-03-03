@@ -20,6 +20,9 @@ export class HomePage {
 
   dataLoaded = false;
 
+  isSearching = false;
+  search = '';
+
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private appProductService: AppProductService, private menu: MenuController) {
 
     let loader = this.loadingCtrl.create({
@@ -38,6 +41,8 @@ export class HomePage {
   }
 
   openCart() {
+    this.isSearching = false;
+    this.search = '';
     this.navCtrl.push(CartPage);
   }
 

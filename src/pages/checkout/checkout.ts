@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 
 import { UserInfoCheckout } from '../../interfaces';
 
+import { AppProductService } from '../../shared/services/app-product.service';
+
 import { CheckoutSuccessPage } from '../checkout-success/checkout-success';
 
 @Component({
@@ -18,7 +20,13 @@ export class CheckoutPage {
 
   formSubmitBtnTouched = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private menu: MenuController) {}
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    private menu: MenuController,
+    private appProductService: AppProductService
+  ) {}
 
   ionViewDidEnter() {
     this.menu.swipeEnable(false);
@@ -41,6 +49,8 @@ export class CheckoutPage {
       alert.present();
       return;
     }
+
+    this.appProductService.clearCart();
 
     this.navCtrl.setRoot(CheckoutSuccessPage);
   }

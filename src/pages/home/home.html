@@ -1,12 +1,21 @@
 <ion-header>
   <ion-navbar color="dark">
-    <button ion-button menuToggle>
+    <ion-buttons left [hidden]="!isSearching" (click)="isSearching=false; search=''">
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="search" [hidden]="!isSearching"></ion-searchbar>
+    <button ion-button menuToggle [hidden]="isSearching">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
+    <ion-title [hidden]="isSearching">
       Ionic 2 Tutorial
     </ion-title>
     <ion-buttons end>
+      <button ion-button icon-only [hidden]="isSearching" (click)="isSearching=true">
+        <ion-icon name="search"></ion-icon>
+      </button>
       <button ion-button icon-only *ngIf="cartItemCount" (click)="openCart()">
         <ion-icon name="basket"></ion-icon>
       </button>
@@ -15,7 +24,12 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="dataLoaded && (products | filter:'name':search).length === 0" style="padding-top:20px;">
+    <h5 style="color:gray; text-align: center;">
+      No item found
+    </h5>
+  </div>
   <ion-list>
-    <app-product-card [product]="product" *ngFor="let product of products"></app-product-card>
+    <app-product-card [product]="product" *ngFor="let product of products | filter:'name':search"></app-product-card>
   </ion-list>
 </ion-content>
