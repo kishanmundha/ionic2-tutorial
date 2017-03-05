@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { NavController, LoadingController, MenuController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController, Searchbar } from 'ionic-angular';
 
 import { Product } from '../../interfaces';
 
@@ -13,6 +13,8 @@ import { CartPage } from '../cart/cart';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  @ViewChild('searchbar') searchbar: Searchbar;
 
   products: Product[] = [];
 
@@ -44,6 +46,13 @@ export class HomePage {
     this.isSearching = false;
     this.search = '';
     this.navCtrl.push(CartPage);
+  }
+
+  enableSearch() {
+    this.isSearching=true;
+    setTimeout(() => {
+      this.searchbar.setFocus();
+    }, 100);
   }
 
 }

@@ -5,7 +5,7 @@
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-searchbar [(ngModel)]="search" [hidden]="!isSearching"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="search" [hidden]="!isSearching" #searchbar></ion-searchbar>
     <button ion-button menuToggle [hidden]="isSearching">
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -13,7 +13,7 @@
       Ionic 2 Tutorial
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only [hidden]="isSearching" (click)="isSearching=true">
+      <button ion-button icon-only [hidden]="isSearching" (click)="enableSearch()">
         <ion-icon name="search"></ion-icon>
       </button>
       <button ion-button icon-only *ngIf="cartItemCount" (click)="openCart()">
