@@ -4,5 +4,5 @@
     </ion-thumbnail>
     <h2>{{product.name}}</h2>
     <p>{{product.price | currency:'INR':true}}</p>
-    <button color="dark" ion-button clear item-right (click)="addToCart(product.id, product.name)">Add to cart</button>
+    <button class="add-to-cat-btn" color="dark" ion-button item-right (click)="addToCart(product.id, product.name)">Add to cart</button>
 </ion-item>
