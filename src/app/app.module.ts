@@ -18,6 +18,7 @@ import { CheckoutPage } from '../pages/checkout/checkout';
 import { CheckoutSuccessPage } from '../pages/checkout-success/checkout-success';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { FeedbackSuccessPage } from '../pages/feedback-success/feedback-success';
+import { AboutPage } from '../pages/about/about';
 
 import { AppProductCardComponent } from '../shared/components/app-product-card.component';
 
@@ -31,7 +32,8 @@ import { AppProductCardComponent } from '../shared/components/app-product-card.c
     CheckoutSuccessPage,
     FeedbackPage,
     FeedbackSuccessPage,
-    AppProductCardComponent
+    AppProductCardComponent,
+    AboutPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -46,7 +48,8 @@ import { AppProductCardComponent } from '../shared/components/app-product-card.c
     CheckoutPage,
     CheckoutSuccessPage,
     FeedbackPage,
-    FeedbackSuccessPage
+    FeedbackSuccessPage,
+    AboutPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AppProductService, {provide: Http, useClass: AppHttpService, deps: [XHRBackend, RequestOptions]}]
 })
