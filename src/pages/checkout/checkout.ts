@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController, LoadingController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 import { UserInfoCheckout } from '../../interfaces';
@@ -25,7 +25,8 @@ export class CheckoutPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     private menu: MenuController,
-    private appProductService: AppProductService
+    private appProductService: AppProductService,
+    public loadingCtrl: LoadingController
   ) {}
 
   ionViewDidEnter() {
@@ -50,9 +51,17 @@ export class CheckoutPage {
       return;
     }
 
-    this.appProductService.clearCart();
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
 
-    this.navCtrl.setRoot(CheckoutSuccessPage);
+    loader.present();
+    
+    setTimeout(() => {
+      loader.dismiss();
+      this.appProductService.clearCart();
+      this.navCtrl.setRoot(CheckoutSuccessPage);
+    }, 2000);
   }
 
 }

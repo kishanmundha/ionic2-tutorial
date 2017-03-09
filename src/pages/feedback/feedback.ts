@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController, LoadingController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 import { UserInfoFeedback } from '../../interfaces';
@@ -17,7 +17,7 @@ export class FeedbackPage {
 
   formSubmitBtnTouched = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private menu: MenuController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private menu: MenuController, public loadingCtrl: LoadingController) {}
 
   ionViewDidEnter() {
     this.menu.swipeEnable(true);
@@ -40,7 +40,16 @@ export class FeedbackPage {
       return;
     }
 
-    this.navCtrl.setRoot(FeedbackSuccessPage);
+    let loader = this.loadingCtrl.create({
+      content: "Sending feedback..."
+    });
+
+    loader.present();
+    
+    setTimeout(() => {
+      loader.dismiss();
+      this.navCtrl.setRoot(FeedbackSuccessPage);
+    }, 2000);
   }
 
 }
