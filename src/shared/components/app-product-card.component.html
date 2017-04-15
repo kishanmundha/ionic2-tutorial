@@ -1,0 +1,8 @@
+<ion-item>
+    <ion-thumbnail item-left>
+        <img  [src]="product.image" />
+    </ion-thumbnail>
+    <h2>{{product.name}}</h2>
+    <p>{{product.price | currency:'INR':true}}</p>
+    <button class="add-to-cat-btn" color="dark" ion-button item-right (click)="addToCart(product.id, product.name)">Add to cart</button>
+</ion-item>

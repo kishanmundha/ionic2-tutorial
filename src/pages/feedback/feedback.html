@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Feedback</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form novalidate name="feedbackForm" #feedbackForm="ngForm">
+
+    <ion-item>
+      <ion-label floating>Full name</ion-label>
+      <ion-input type="text" required name="fullName" [(ngModel)]="userInfo.fullName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Mobile</ion-label>
+      <ion-input type="text" required name="mobile" [(ngModel)]="userInfo.mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" required name="email" [(ngModel)]="userInfo.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Feedback</ion-label>
+      <ion-textarea required name="feedback" [(ngModel)]="userInfo.feedback"></ion-textarea>
+    </ion-item>
+
+    <div padding>
+      <button block ion-button color="dark" type="submit" [disabled]="formSubmitBtnTouched && feedbackForm.invalid" (click)="sendFeedback()">Send Feedback</button>
+    </div>
+  </form>
+
+</ion-content>
