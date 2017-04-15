@@ -28,6 +28,7 @@
   <preference name="FadeSplashScreenDuration" value="300"/>
   <preference name="SplashShowOnlyFirstTime" value="false"/>
   <preference name="AutoHideSplashScreen" value="false"/>
+  <preference name="loadUrlTimeoutValue" value="700000"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
