@@ -5,6 +5,11 @@ Ionic 2 tutorial design in Ionic2 framework to begainner.
 ## Locally run
 ---
 
+### Pre requirement
+
+1. Install Nodejs (https://nodejs.org/en/)
+2. Install ionic cli by command `npm install -g ionic cordova`
+
 ### Clone repository
 
 ```sh
